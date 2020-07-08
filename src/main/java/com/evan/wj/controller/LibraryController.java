@@ -20,8 +20,11 @@ public class LibraryController {
 
     @PostMapping("/api/books")
     public Book addOrUpdate(@RequestBody Book book) throws Exception {
-        bookService.addOrUpdate(book);
-        return book;
+
+        //System.out.println(book.getAuthor()+" "+ book.getCategory());
+        //return  null;
+          bookService.addOrUpdate(book);
+         return book;
     }
 
     @PostMapping("/api/delete")
