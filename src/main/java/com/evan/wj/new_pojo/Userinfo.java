@@ -3,11 +3,12 @@ package com.evan.wj.new_pojo;
 import javax.persistence.*;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
 
 /**
- * @Description  
+ * @Description
  * @Author  wwhh
- * @Date 2020-07-08 17:54:11 
+ * @Date 2020-07-16 14:54:50
  */
 
 @Entity
@@ -15,12 +16,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table ( name ="userinfo")
 public class Userinfo  implements Serializable {
 
-	private static final long serialVersionUID =  1365400816460005338L;
+	private static final long serialVersionUID =  4031837938595467665L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
    	@Column(name = "id" )
 	private int id;
+
+   	@Column(name = "userno" )
+	private String userno;
 
    	@Column(name = "username" )
 	private String username;
@@ -28,11 +32,18 @@ public class Userinfo  implements Serializable {
    	@Column(name = "password" )
 	private String password;
 
-   	@Column(name = "orgid" )
-	private int orgid;
-
    	@Column(name = "realname" )
 	private String realname;
+
+   	@ManyToOne
+   	@JoinColumn(name = "orgid" )
+	private Org org;
+
+   	@Column(name = "createtime" )
+	private Date createtime;
+
+   	@Column(name = "userrole" )
+	private int userrole;
 
 	public int getId() {
 		return this.id;
@@ -40,6 +51,14 @@ public class Userinfo  implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUserno() {
+		return this.userno;
+	}
+
+	public void setUserno(String userno) {
+		this.userno = userno;
 	}
 
 	public String getUsername() {
@@ -58,14 +77,6 @@ public class Userinfo  implements Serializable {
 		this.password = password;
 	}
 
-	public int getOrgid() {
-		return this.orgid;
-	}
-
-	public void setOrgid(int orgid) {
-		this.orgid = orgid;
-	}
-
 	public String getRealname() {
 		return this.realname;
 	}
@@ -74,14 +85,41 @@ public class Userinfo  implements Serializable {
 		this.realname = realname;
 	}
 
+	public Org getOrg() {
+		return org;
+	}
+
+	public void setOrg(Org org) {
+		this.org = org;
+	}
+
+	public Date getCreatetime() {
+		return this.createtime;
+	}
+
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+
+	public int getUserrole() {
+		return this.userrole;
+	}
+
+	public void setUserrole(int userrole) {
+		this.userrole = userrole;
+	}
+
 	@Override
 	public String toString() {
 		return "{" +
 					"id='" + id + '\'' +
+					"userno='" + userno + '\'' +
 					"username='" + username + '\'' +
 					"password='" + password + '\'' +
-					"orgid='" + orgid + '\'' +
 					"realname='" + realname + '\'' +
+					"orgid='" + org.getId() + '\'' +
+					"createtime='" + createtime + '\'' +
+					"userrole='" + userrole + '\'' +
 				'}';
 	}
 

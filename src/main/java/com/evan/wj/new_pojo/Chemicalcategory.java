@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * @Description  
  * @Author  wwhh
- * @Date 2020-07-08 17:54:11 
+ * @Date 2020-07-16 14:54:50 
  */
 
 @Entity
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table ( name ="chemicalcategory")
 public class Chemicalcategory  implements Serializable {
 
-	private static final long serialVersionUID =  6529901575202633004L;
+	private static final long serialVersionUID =  3607446351951207990L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

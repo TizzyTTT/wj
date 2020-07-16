@@ -2,14 +2,12 @@ package com.evan.wj.new_pojo;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
-import com.evan.wj.pojo.Category;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @Description
  * @Author  wwhh
- * @Date 2020-07-08 17:54:11
+ * @Date 2020-07-16 14:54:50
  */
 
 @Entity
@@ -17,29 +15,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table ( name ="chemicals")
 public class Chemicals  implements Serializable {
 
-	private static final long serialVersionUID =  2427816377618505591L;
+	private static final long serialVersionUID =  3067937288254670587L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
    	@Column(name = "id" )
 	private int id;
 
-
-//   @Column(name = "cid" )
-//	private int cid;
-
-	@ManyToOne
-	@JoinColumn(name="cid")
-	private Chemicalcategory chemicalcategory;
+   	@Column(name = "chemicalno" )
+	private String chemicalno;
 
    	@Column(name = "chemicalname" )
 	private String chemicalname;
 
-   	@Column(name = "danwei" )
-	private String danwei;
-
-   	@Column(name = "chemicalno" )
-	private String chemicalno;
+   	@ManyToOne
+   	@JoinColumn(name = "cid" )
+	private Chemicalcategory chemicalcategory;
 
 	public int getId() {
 		return this.id;
@@ -47,30 +38,6 @@ public class Chemicals  implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Chemicalcategory getChemicalcategory() {
-		return this.chemicalcategory;
-	}
-
-	public void setCategory(Chemicalcategory chemicalcategory) {
-		this.chemicalcategory = chemicalcategory;
-	}
-
-	public String getChemicalname() {
-		return this.chemicalname;
-	}
-
-	public void setChemicalname(String chemicalname) {
-		this.chemicalname = chemicalname;
-	}
-
-	public String getDanwei() {
-		return this.danwei;
-	}
-
-	public void setDanwei(String danwei) {
-		this.danwei = danwei;
 	}
 
 	public String getChemicalno() {
@@ -81,5 +48,30 @@ public class Chemicals  implements Serializable {
 		this.chemicalno = chemicalno;
 	}
 
+	public String getChemicalname() {
+		return this.chemicalname;
+	}
+
+	public void setChemicalname(String chemicalname) {
+		this.chemicalname = chemicalname;
+	}
+
+	public Chemicalcategory getChemicalcategory() {
+		return chemicalcategory;
+	}
+
+	public void setChemicalcategory(Chemicalcategory chemicalcategory) {
+		this.chemicalcategory = chemicalcategory;
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+					"id='" + id + '\'' +
+					"chemicalno='" + chemicalno + '\'' +
+					"chemicalname='" + chemicalname + '\'' +
+					"cid='" + chemicalcategory.getId() + '\'' +
+				'}';
+	}
 
 }

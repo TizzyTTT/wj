@@ -5,9 +5,9 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * @Description  
+ * @Description
  * @Author  wwhh
- * @Date 2020-07-08 17:54:11 
+ * @Date 2020-07-16 14:54:50
  */
 
 @Entity
@@ -15,18 +15,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table ( name ="cabinet")
 public class Cabinet  implements Serializable {
 
-	private static final long serialVersionUID =  8313715178068406069L;
+	private static final long serialVersionUID =  2557557943119594483L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
    	@Column(name = "id" )
 	private int id;
 
-   	@Column(name = "cabname" )
-	private String cabname;
-
    	@Column(name = "cabno" )
 	private String cabno;
+
+   	@Column(name = "cabname" )
+	private String cabname;
 
    	@Column(name = "cabaddr" )
 	private String cabaddr;
@@ -34,8 +34,12 @@ public class Cabinet  implements Serializable {
    	@Column(name = "cabremark" )
 	private String cabremark;
 
-   	@Column(name = "orgid" )
-	private int orgid;
+   	@ManyToOne
+   	@JoinColumn(name = "orgid" )
+	private Org org;
+
+   	@Column(name = "runstate" )
+	private int runstate;
 
 	public int getId() {
 		return this.id;
@@ -45,20 +49,20 @@ public class Cabinet  implements Serializable {
 		this.id = id;
 	}
 
-	public String getCabname() {
-		return this.cabname;
-	}
-
-	public void setCabname(String cabname) {
-		this.cabname = cabname;
-	}
-
 	public String getCabno() {
 		return this.cabno;
 	}
 
 	public void setCabno(String cabno) {
 		this.cabno = cabno;
+	}
+
+	public String getCabname() {
+		return this.cabname;
+	}
+
+	public void setCabname(String cabname) {
+		this.cabname = cabname;
 	}
 
 	public String getCabaddr() {
@@ -77,23 +81,32 @@ public class Cabinet  implements Serializable {
 		this.cabremark = cabremark;
 	}
 
-	public int getOrgid() {
-		return this.orgid;
+	public Org getOrg() {
+		return org;
 	}
 
-	public void setOrgid(int orgid) {
-		this.orgid = orgid;
+	public void setOrg(Org org) {
+		this.org = org;
+	}
+
+	public int getRunstate() {
+		return this.runstate;
+	}
+
+	public void setRunstate(int runstate) {
+		this.runstate = runstate;
 	}
 
 	@Override
 	public String toString() {
 		return "{" +
 					"id='" + id + '\'' +
-					"cabname='" + cabname + '\'' +
 					"cabno='" + cabno + '\'' +
+					"cabname='" + cabname + '\'' +
 					"cabaddr='" + cabaddr + '\'' +
 					"cabremark='" + cabremark + '\'' +
-					"orgid='" + orgid + '\'' +
+					"orgid='" + org.getId() + '\'' +
+					"runstate='" + runstate + '\'' +
 				'}';
 	}
 

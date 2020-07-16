@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * @Description  
  * @Author  wwhh
- * @Date 2020-07-08 17:54:11 
+ * @Date 2020-07-16 14:54:50 
  */
 
 @Entity
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table ( name ="org")
 public class Org  implements Serializable {
 
-	private static final long serialVersionUID =  5083287281622800811L;
+	private static final long serialVersionUID =  5178084753661259272L;
 
 	/**
 	 * 组织id
@@ -31,17 +31,14 @@ public class Org  implements Serializable {
    	@Column(name = "pid" )
 	private int pid;
 
+   	@Column(name = "orgno" )
+	private String orgno;
+
 	/**
 	 * 组织英文名称
 	 */
    	@Column(name = "orgname" )
 	private String orgname;
-
-	/**
-	 * 组织中文名称
-	 */
-   	@Column(name = "orgname_zh" )
-	private String orgnameZh;
 
 	public int getId() {
 		return this.id;
@@ -59,6 +56,14 @@ public class Org  implements Serializable {
 		this.pid = pid;
 	}
 
+	public String getOrgno() {
+		return this.orgno;
+	}
+
+	public void setOrgno(String orgno) {
+		this.orgno = orgno;
+	}
+
 	public String getOrgname() {
 		return this.orgname;
 	}
@@ -67,21 +72,13 @@ public class Org  implements Serializable {
 		this.orgname = orgname;
 	}
 
-	public String getOrgnameZh() {
-		return this.orgnameZh;
-	}
-
-	public void setOrgnameZh(String orgnameZh) {
-		this.orgnameZh = orgnameZh;
-	}
-
 	@Override
 	public String toString() {
 		return "{" +
 					"id='" + id + '\'' +
 					"pid='" + pid + '\'' +
+					"orgno='" + orgno + '\'' +
 					"orgname='" + orgname + '\'' +
-					"orgnameZh='" + orgnameZh + '\'' +
 				'}';
 	}
 

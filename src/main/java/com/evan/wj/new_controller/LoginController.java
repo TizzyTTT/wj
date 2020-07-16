@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 @Controller
-public class New_LoginController {
+public class LoginController {
 
     @Autowired
     New_UserService userService;
